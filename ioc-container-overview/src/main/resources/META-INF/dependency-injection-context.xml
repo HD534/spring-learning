@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <import resource="dependency-lookup-context.xml"/>
+
+        <!--        手动配置-->
+<!--    <bean id="personRepo" class="com.andy.spring.ioc.overview.repo.PersonRepo">-->
+<!--        <property name="persons">-->
+<!--            <util:list>-->
+<!--                <ref bean="superPerson"></ref>-->
+<!--                <ref bean="person"></ref>-->
+<!--            </util:list>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+        <!--        auto wiring -->
+    <bean id="personRepo" class="com.andy.spring.ioc.overview.repo.PersonRepo" autowire="byType">
+        <property name="persons">
+            <util:list>
+                <ref bean="person"></ref>
+                <ref bean="superPerson"></ref>
+            </util:list>
+        </property>
+    </bean>
+
+
+</beans>
